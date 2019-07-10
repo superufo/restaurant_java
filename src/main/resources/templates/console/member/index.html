@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:include="console/header">
+</head>
+<body>
+<section class="content-header">
+    <h1>会员管理</h1>
+    <small>会员管理</small>
+</section>
+<section class="content table-content">
+    <table id="dataGrid"></table>
+    <!--<input type="text" name="hello" th:value="${hello}"/>-->
+</section>
+<div id="toolbar">
+    <a href="/console/member/from" class="btn btn-primary">添加成员</a>
+</div>
+<div th:include="console/footer"></div>
+
+</body>
+
+<script th:inline="javascript">
+    console.log(geti18n("user.account"));
+
+    $table = $("#dataGrid");
+    $(function () {
+        initDataGrid();
+    });
+
+    function initDataGrid(){
+        $table.bootstrapTable({
+            height : tableModel.getHeight(),
+            idField : "uid",
+            columns : [
+                {title: geti18n("user.account"), field: "account" },
+                {title: geti18n("user.firstname"), field: "firstname" },
+                {title: geti18n("user.lastname"), field: "lastname" },
+                {title: geti18n("user.mobile"), field: "mobile" },
+                {title: geti18n("user.useremail"), field: "useremail" },
+                {title: geti18n("user.birthday"), field: "birthday" },
+                {title: geti18n("user.facebook"), field: "facebook" },
+                {title: geti18n("user.google"), field: "google" },
+
+                {title: geti18n("user.state"), field: "state",formatter : tableModel.getState},
+                {title: geti18n("user.createdAt"), field: "createdAt", sortable: true},
+                {title: geti18n("user.updatedAt"), field: "updatedAt", sortable: true},
+                {title: geti18n("user.operate"), field: "operate", align: 'center', events: operateEvents, formatter: operateFormatter}
+            ],
+            url : '/console/member/list',
+            queryParams: function(params){
+                return params;
+            },
+            responseHandler : function (res) {
+                return {
+                    rows : res.result.pageInfo.list,
+                    total : res.result.pageInfo.total
+                }
+            },
+            search : true,
+            searchOnEnterKey : true,
+            sortName : 'createdAt',
+            sortOrder : 'asc',
+            pagination : true,
+            sidePagination : 'server',
+            pageSize: 20,
+            pageList : [20, 40, 50, 100],
+            showRefresh : true,
+            showToggle : true
+        });
+    }
+
+    function operateFormatter(value, row, index) {
+        return [
+            '<a href="/console/admin/from?uid='+row.uid+'" >',
+            '<i class="glyphicon glyphicon-edit"></i>'+ geti18n("edit"),
+            '</a>  ',
+            '<a class="remove" href="javascript:void(0);">',
+            '<i class="glyphicon glyphicon-remove"></i>'+ geti18n("delete"),
+            '</a>'
+        ].join('');
+    }
+
+    window.operateEvents = {
+        'click .remove': function (e, value, row, index) {
+            layer.msg('暂不支持删除')
+        }
+    };
+</script>
+</html>
