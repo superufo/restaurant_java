@@ -15,4 +15,12 @@ public interface MemberMapper extends CustomerMapper<Member> {
      * @return
      */
     Member selectByUsername(String username);
+
+    Member selectByAccount(String account);
+
+    Member selectByGoogle(String google);
+
+    Member selectByFacebook(String facebook);
+
+
 }

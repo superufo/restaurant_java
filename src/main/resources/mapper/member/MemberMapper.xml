@@ -33,4 +33,17 @@
     select *  from member where account = #{uername};
   </select>
 
+  <select id="selectByAccount" parameterType="String" resultMap="BaseResultMap">
+    select *  from member where account = #{account};
+  </select>
+
+  <select id="selectByGoogle" parameterType="String" resultMap="BaseResultMap">
+    select *  from member where google = #{google};
+  </select>
+
+  <select id="selectByFacebook" parameterType="String" resultMap="BaseResultMap">
+    select *  from member where facebook = #{facebook};
+  </select>
+
+
 </mapper>

@@ -22,15 +22,15 @@ public class MemberService {
 
     public List<Member> getPageList(Member member) {
         PageHelper.offsetPage(member.getOffset(), member.getLimit());
-        PageHelper.orderBy(CamelCaseUtil.toUnderlineName(member.getSort())+" "+member.getOrder());
+        PageHelper.orderBy(CamelCaseUtil.toUnderlineName(member.getSort()) + " " + member.getOrder());
         return memberMapper.selectAll();
     }
 
-    public Integer getCount(Example example){
+    public Integer getCount(Example example) {
         return memberMapper.selectCountByExample(example);
     }
 
-    public Member getMember(Member member){
+    public Member getMember(Member member) {
         return memberMapper.selectOne(member);
     }
 
@@ -38,7 +38,20 @@ public class MemberService {
         return memberMapper.selectByUsername(username);
     }
 
-    public void insert(Member member){
+    public Member findByGoogle(String google) {
+        return memberMapper.selectByGoogle(google);
+    }
+
+    public Member findByFacebook(String facebook) {
+        return memberMapper.selectByFacebook(facebook);
+    }
+
+    public Member findByAccount(String account) {
+        return memberMapper.selectByAccount(account);
+    }
+
+
+    public void insert(Member member) {
         memberMapper.insert(member);
     }
 }
