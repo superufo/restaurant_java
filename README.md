@@ -50,7 +50,7 @@ Geek-Framework主要定位于微应用的开发，已内置后台系统的基础
 * 升级J2cache为2.7.0版本，主要修复channel获取次数过多导致的错误问题，另个j2cache后期可能会移除对jedis的支持，所以还是提前升级了吧
 * 调整二级缓存redis为lettuce，lettuce为spring推荐的redis操作方式，另个j2cache也推荐使用
 * 配置文件application.yml和j2cache配置文件都增加了对lettuce的支持
-* 修改com.geekcattle.core.redis包下的RedisCacheManage为RedisShiroCacheManage,因为此文件名和spring源码中的一个文件重名，为了区分特此改名
+* 修改com.alamousse.core.redis包下的RedisCacheManage为RedisShiroCacheManage,因为此文件名和spring源码中的一个文件重名，为了区分特此改名
 * 优化RedisConfiguration的JedisConnectionFactory为LettuceConnctionFoctory
 
 
@@ -66,7 +66,7 @@ Geek-Framework主要定位于微应用的开发，已内置后台系统的基础
 * spring-security已与JWT进行了完美的整合（不得不说spring家族的框架比shiro要好处理的太多了）
 * 数据库更新，对前台会员表进行了更新，引入了spring-security最新的密码验证机制BCryptPasswordEncoder，使用随机密钥方式，移除了原有的密码盐方式
 * 文件目录结构进行了优化调整
-* 数据库备份文件至data/geekcattle.sql
+* 数据库备份文件至data/alamousse.sql
 * 修复上次提交时pom文件打包的错误
 * 修复j2cache不同环境配置文件的配置
 * 修复部署文件
@@ -173,7 +173,7 @@ PS：测试数据库会不定期恢复。
 2. 修改src\main\resources\application.properties、application-dev.properties、application-pro.properties文件中的数据库设置参数(application-dev.properties为开发环境的相应参数，application-pro.properties为部署环境的相应参数)。
 3. 根据修改参数创建对应MySql数据库用户和参数。
 4. 运行mvn package脚本，即可创建项目jar文件，同时也可以通过java -jar *.jar 即可本地预览
-5. data\geekcattle.sql导入本地数据库即可
+5. data\alamousse.sql导入本地数据库即可
 6. 最高管理员账号，用户名：admin 密码：admin
 
 ## 如何交流、反馈、参与贡献？

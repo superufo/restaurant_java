@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.geekcattle</groupId>
+    <groupId>com.alamousse</groupId>
     <artifactId>geek-framework</artifactId>
     <packaging>jar</packaging>
     <version>2.0-SNAPSHOT</version>
     <name>Geek-Framework</name>
-    <url>http://www.geekcattle.com</url>
+    <url>http://www.alamousse.com</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -45,8 +45,8 @@
         <!--  MyBatis Generator  -->
         <!--  Java接口和实体类  -->
         <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
-        <targetMapperPackage>com.geekcattle.mapper</targetMapperPackage>
-        <targetModelPackage>com.geekcattle.model</targetModelPackage>
+        <targetMapperPackage>com.alamousse.mapper</targetMapperPackage>
+        <targetModelPackage>com.alamousse.model</targetModelPackage>
         <!--  XML生成路径  -->
         <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
         <targetXMLPackage>mapper</targetXMLPackage>
@@ -278,7 +278,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <mainClass>com.geekcattle.Application</mainClass>
+                    <mainClass>com.alamousse.Application</mainClass>
                     <fork>true</fork><!-- 如果没有该项配置，这个devtools不会起作用，即应用不会restart -->
                 </configuration>
             </plugin>
